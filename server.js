@@ -93,7 +93,9 @@ async function handleBooking(req, res) {
       subject: `New request: ${d.name}, ${d.length}, ${prettyDate(d.date)}`,
       html: wrap('New session request', `<table style="border-collapse:collapse;font-size:15px">${details}</table>
 <p style="margin-top:20px"><a href="https://${DOMAIN}/text?to=${digits(d.phone)}&amp;name=${encodeURIComponent(d.name.split(' ')[0])}" style="background:#0b4a55;color:#fff;padding:10px 18px;border-radius:999px;text-decoration:none;font-weight:bold">Text ${esc(d.name.split(' ')[0])}</a>
+&nbsp; <a href="mailto:${esc(d.email)}?subject=${encodeURIComponent('Your session request with The Missing Link')}&amp;body=${encodeURIComponent(`Hi ${d.name.split(' ')[0]},\n\nThanks for your request for a ${d.length} session on ${prettyDate(d.date)} at ${d.time}.\n\n`)}" style="background:#e3bd86;color:#0a2f35;padding:10px 18px;border-radius:999px;text-decoration:none;font-weight:bold">Email ${esc(d.name.split(' ')[0])}</a>
 &nbsp; <a href="tel:+1${digits(d.phone)}" style="color:#0b4a55;font-weight:bold">Call</a></p>
+<p style="font-size:14px;color:#14282b">Phone: ${esc(d.phone)} &middot; Email: ${esc(d.email)}</p>
 <p style="font-size:13px;color:#4f6366">Reply to this email to answer them directly. They agreed to the 24-hour cancellation policy.</p>`)
     });
   } catch (e) {

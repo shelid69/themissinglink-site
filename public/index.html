@@ -8,7 +8,9 @@
 <link rel="canonical" href="https://themissinglink.co/">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
-<meta name="theme-color" content="#0b4a55">
+<meta name="theme-color" content="#f8f5ef">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light">
 <meta property="og:type" content="website">
 <meta property="og:title" content="The Missing Link | Fascia, Cupping &amp; Massage in Oakhurst, NJ">
 <meta property="og:description" content="Fascial stretch therapy, SMRT, soft tissue work, compression, cupping and body tempering with Sheli. Request your session time online.">
@@ -43,11 +45,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --cream:#f8f5ef; --paper:#fffdf9; --ink:#14282b; --muted:#4f6366;
+  --cream:#f8f5ef; --paper:#f2eadd; --field:#fcf8f1; --ink:#14282b; --muted:#4f6366;
   --teal:#0b4a55; --teal-2:#0f6170; --deep:#0a2f35; --sage:#9fb393; --sage-soft:#e7eee2;
   --sand:#e3bd86; --sand-soft:#f6ead8; --line:#e2ddd2; --radius:18px;
 }
 *{box-sizing:border-box}
+html{background:#f8f5ef;color-scheme:light only}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--cream);color:var(--ink);font-family:Manrope,system-ui,sans-serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
 img,video{max-width:100%;height:auto;display:block}
@@ -102,7 +105,7 @@ section{padding:88px 0}
 
 /* modalities */
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
-.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px;display:flex;flex-direction:column}
+.card{background:var(--field);border:1px solid var(--line);border-radius:var(--radius);padding:28px;display:flex;flex-direction:column}
 .card .tag{align-self:flex-start;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);background:var(--sage-soft);padding:5px 10px;border-radius:999px;margin-bottom:14px}
 .card h3{margin-bottom:10px}
 .card p{color:var(--muted);font-size:.97rem}
@@ -133,7 +136,7 @@ section{padding:88px 0}
 
 /* steps */
 .steps{list-style:none;padding:0;margin:40px 0 0;display:grid;grid-template-columns:repeat(4,1fr);gap:22px;counter-reset:s}
-.steps li{counter-increment:s;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.steps li{counter-increment:s;background:var(--field);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
 .steps li::before{content:counter(s);display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--teal);color:#fff;font-weight:700;margin-bottom:14px}
 .steps h3{font-size:1.1rem}
 .steps p{font-size:.94rem;color:var(--muted);margin:0}
@@ -146,13 +149,14 @@ form{background:var(--cream);border:1px solid var(--line);border-radius:var(--ra
 .field{margin-bottom:18px}
 label,.legend{display:block;font-weight:700;font-size:.92rem;margin-bottom:6px;color:var(--deep)}
 .opt{font-weight:500;color:var(--muted)}
-input[type=text],input[type=email],input[type=tel],input[type=date],select,textarea{width:100%;font:inherit;font-size:1rem;padding:12px 14px;border:1px solid #cfc9bc;border-radius:12px;background:#fff;color:var(--ink)}
+input[type=text],input[type=email],input[type=tel],input[type=date],select,textarea{width:100%;font:inherit;font-size:1rem;padding:12px 14px;border:1px solid #cfc9bc;border-radius:12px;background:var(--field);color:var(--ink);-webkit-appearance:none;appearance:none}
+select{background-image:linear-gradient(45deg,transparent 50%,#0b4a55 50%),linear-gradient(135deg,#0b4a55 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;background-size:6px 6px;background-repeat:no-repeat;padding-right:36px}
 textarea{min-height:96px;resize:vertical}
 input:focus,select:focus,textarea:focus{outline:2px solid var(--teal-2);outline-offset:1px;border-color:transparent}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chips label{margin:0;font-weight:600;font-size:.9rem;color:var(--ink);cursor:pointer}
 .chips input{position:absolute;opacity:0;pointer-events:none}
-.chips span{display:inline-block;padding:8px 14px;border:1px solid #cfc9bc;border-radius:999px;background:#fff;transition:all .15s}
+.chips span{display:inline-block;padding:8px 14px;border:1px solid #cfc9bc;border-radius:999px;background:var(--field);transition:all .15s}
 .chips input:checked+span{background:var(--teal);color:#fff;border-color:var(--teal)}
 .chips input:focus-visible+span{outline:2px solid var(--teal-2);outline-offset:2px}
 .check{display:flex;gap:10px;align-items:flex-start;font-weight:500;font-size:.92rem;color:var(--ink)}
@@ -169,11 +173,11 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--teal-2);outline-
 .rev-head{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-bottom:28px}
 .stars{color:#d79b33;letter-spacing:2px}
 .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.rev{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:22px;font-size:.95rem}
+.rev{background:var(--field);border:1px solid var(--line);border-radius:var(--radius);padding:22px;font-size:.95rem}
 .rev b{display:block;margin-top:10px;color:var(--deep)}
 
 /* faq */
-.faq details{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:12px;padding:0 22px}
+.faq details{background:var(--field);border:1px solid var(--line);border-radius:14px;margin-bottom:12px;padding:0 22px}
 .faq summary{cursor:pointer;font-weight:700;padding:18px 0;list-style:none;display:flex;justify-content:space-between;gap:16px;color:var(--deep)}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"+";font-size:1.4rem;line-height:1;color:var(--teal)}
@@ -223,6 +227,39 @@ footer li{margin-bottom:8px;color:#c3d4d1}
   .web{padding:24px}
   footer .wrap{grid-template-columns:1fr}
 }
+
+/* interactive layer */
+.card{transition:transform .25s ease,box-shadow .25s ease,border-color .25s}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 40px -22px rgba(10,47,53,.45);border-color:var(--sage)}
+.icon{width:58px;height:58px;border-radius:16px;display:grid;place-items:center;margin-bottom:16px;background:linear-gradient(140deg,var(--teal-2),var(--deep));color:#fff;box-shadow:0 10px 22px -10px rgba(11,74,85,.7),inset 0 0 0 2px rgba(227,189,134,.35);transition:transform .35s ease,background .35s}
+.card:hover .icon{background:linear-gradient(140deg,var(--sand),#c99a5b);color:var(--deep)}
+.icon svg{width:30px;height:30px}
+.card:hover .icon{transform:rotate(-6deg) scale(1.08)}
+.card .tag{position:absolute;top:24px;right:24px;margin:0}
+#modalities .card{position:relative}
+.add{margin-top:14px;align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font:inherit;font-weight:700;font-size:.9rem;padding:9px 16px;border-radius:999px;border:2px solid var(--teal);background:transparent;color:var(--teal);cursor:pointer;transition:all .2s}
+.add::before{content:"+";font-size:1.1rem;line-height:1}
+.add[aria-pressed=true]{background:var(--teal);color:#fff}
+.add[aria-pressed=true]::before{content:"\2713"}
+.picked{position:fixed;left:50%;bottom:18px;transform:translate(-50%,140%);z-index:60;background:var(--deep);color:#fff;border-radius:999px;padding:10px 10px 10px 20px;display:flex;align-items:center;gap:14px;box-shadow:0 14px 40px -12px rgba(0,0,0,.5);transition:transform .35s ease;font-weight:600;font-size:.92rem;white-space:nowrap}
+.picked.show{transform:translate(-50%,0)}
+.picked a{background:var(--sand);color:var(--deep);padding:8px 16px;border-radius:999px;text-decoration:none;font-weight:700}
+.session{cursor:pointer;border-width:2px}
+.session.on{border-color:var(--teal);box-shadow:0 0 0 4px rgba(11,74,85,.12)}
+.session .pick{margin-top:auto;font-weight:700;color:var(--teal);font-size:.92rem}
+.session.on .pick::after{content:" \2713"}
+.web-demo{margin-top:26px;background:var(--deep);border-radius:var(--radius);padding:18px;position:relative;overflow:hidden}
+.web-demo canvas{display:block;width:100%;height:260px;touch-action:none;cursor:grab}
+.web-demo canvas:active{cursor:grabbing}
+.web-demo p{margin:10px 4px 0;color:#cfdedb;font-size:.88rem}
+.web-demo .hint{position:absolute;top:26px;left:28px;background:var(--sand);color:var(--deep);font-weight:700;font-size:.8rem;padding:6px 12px;border-radius:999px;pointer-events:none;transition:opacity .4s}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+.hero-art img{animation:float 7s ease-in-out infinite}
+.hero-art::before{animation:breathe 7s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-10px)}}
+@keyframes breathe{50%{transform:scale(1.04)}}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.hero-art img,.hero-art::before{animation:none}.card,.icon{transition:none}}
 </style>
 </head>
 <body>
@@ -273,8 +310,13 @@ footer li{margin-bottom:8px;color:#c3d4d1}
       <h2>What fascia actually is</h2>
       <p>Fascia is the connective tissue that surrounds and links your muscles, organs, nerves and vessels. An international group of fascia researchers describes it as a continuous system that runs through the whole body rather than a set of separate wrappers (Adstrum et al., <em>Journal of Bodywork and Movement Therapies</em>, 2017).</p>
       <p>That is why tightness rarely stays in one spot. A stiff calf can show up as a sore foot. A guarded shoulder can pull on the neck. Sheli works the whole chain, not only the place that hurts.</p>
+      <div class="web-demo">
+        <span class="hint" id="web-hint">Touch and pull the web</span>
+        <canvas id="web" aria-label="Interactive web: pull one point and watch the tension spread"></canvas>
+        <p>An illustration, not anatomy: pull one point and watch the tension travel.</p>
+      </div>
     </div>
-    <div class="web">
+    <div class="reveal web">
       <h3>The honest version of how relief happens</h3>
       <p>You will hear that massage "breaks up" or "releases" fascia. The science is more interesting than that.</p>
       <ul>
@@ -293,52 +335,63 @@ footer li{margin-bottom:8px;color:#c3d4d1}
     <p class="lead">Most sessions blend two or three of these. Tell Sheli what you feel and she picks the tools that fit.</p>
 
     <div class="grid">
-      <article class="card">
+      <article class="reveal card">
         <span class="tag">Certified</span>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h18M6 8l-3 4 3 4M18 8l3 4-3 4"/><path d="M9 12c1-3 5-3 6 0" /></svg></div>
         <h3>Fascial Stretch Therapy</h3>
         <p>An assisted, table-based stretching method. Sheli moves your limbs through slow, pain-free ranges while you breathe, working through whole lines of tissue from the hips and spine out to the limbs.</p>
         <p class="feel"><b>Feels like:</b> gentle, rhythmic traction. You stay fully clothed.</p>
         <p class="evidence"><b>What the research says:</b> Fascial Stretch Therapy has little published clinical research behind it, so we make no medical claims about it. It is offered for comfort and ease of movement.</p>
+        <button type="button" class="add" data-focus="Fascial Stretch Therapy" aria-pressed="false">Add To My Session</button>
       </article>
 
-      <article class="card">
+      <article class="reveal card">
         <span class="tag">Certified</span>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15c3 0 3-6 6-6s3 6 6 6 3-6 6-6"/><circle cx="12" cy="19" r="1.4"/></svg></div>
         <h3>Spontaneous Muscle Release Technique</h3>
         <p>SMRT places a tight muscle in a position of comfort and holds it there, giving the nervous system a chance to let the muscle soften on its own. It is quiet, precise and very low force.</p>
         <p class="feel"><b>Feels like:</b> being placed and supported, then a slow let-go.</p>
         <p class="evidence"><b>What the research says:</b> SMRT has not been studied by name in published clinical trials, so we make no medical claims about it. Many clients choose it when deeper pressure feels like too much.</p>
+        <button type="button" class="add" data-focus="SMRT" aria-pressed="false">Add To My Session</button>
       </article>
 
-      <article class="card">
+      <article class="reveal card">
         <span class="tag">Hands On</span>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 11V6a1.5 1.5 0 0 1 3 0v4M10 10V4.5a1.5 1.5 0 0 1 3 0V10M13 10V5.5a1.5 1.5 0 0 1 3 0V12M16 12V8.5a1.5 1.5 0 0 1 3 0V14a7 7 0 0 1-7 7h-1a6 6 0 0 1-5-3l-2.6-4.4a1.5 1.5 0 0 1 2.6-1.5L7 14"/></svg></div>
         <h3>Soft Tissue Manipulation</h3>
         <p>Classic massage strokes and myofascial work that glide, knead and hold across muscle and fascia, adjusted from light to deep based on what your body tolerates that day.</p>
         <p class="feel"><b>Feels like:</b> steady, warming pressure that follows the tissue.</p>
         <p class="evidence"><b>What the research says:</b> a review of 26 trials found massage reduced pain and improved function in the short term compared with no treatment for some musculoskeletal conditions, without a clear edge over other active treatments (Bervoets et al., <em>Journal of Physiotherapy</em>, 2015). A review of myofascial release trials reported encouraging but mixed results of varying quality (Ajimsha et al., <em>Journal of Bodywork and Movement Therapies</em>, 2015).</p>
+        <button type="button" class="add" data-focus="Soft Tissue" aria-pressed="false">Add To My Session</button>
       </article>
 
-      <article class="card">
+      <article class="reveal card">
         <span class="tag">Hands On</span>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v9M8 8l4 4 4-4"/><path d="M4 18c2.5-2 5.5-3 8-3s5.5 1 8 3"/><path d="M4 21h16"/></svg></div>
         <h3>Compression</h3>
         <p>Sustained, direct pressure on a tender point or band of tight tissue, held until it starts to ease. Often used on the knots people point to and say "right there."</p>
         <p class="feel"><b>Feels like:</b> a focused "good hurt" that fades as you breathe.</p>
         <p class="evidence"><b>What the research says:</b> a 2022 meta-analysis found sustained compression on trigger points raised how much pressure people could tolerate before pain, though it did not clearly lower their reported pain scores. The trials were small (Lu et al., <em>Chiropractic &amp; Manual Therapies</em>, 2022).</p>
+        <button type="button" class="add" data-focus="Compression" aria-pressed="false">Add To My Session</button>
       </article>
 
-      <article class="card">
+      <article class="reveal card">
         <span class="tag">Tools</span>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h12l-1.5 9a2 2 0 0 1-2 1.7h-5a2 2 0 0 1-2-1.7z"/><path d="M5 21h14M12 3v2M8.5 4l.7 1.6M15.5 4l-.7 1.6"/></svg></div>
         <h3>Cupping</h3>
         <p>Cups create suction that lifts skin and tissue instead of pressing down on it. They can be left in place or glided across an area with oil.</p>
         <p class="feel"><b>Feels like:</b> a pulling stretch. Circular marks are common and usually fade.</p>
-        <p class="evidence"><b>What the research says:</b> evidence is still thin. A 2025 review comparing real cupping with placebo cupping for musculoskeletal pain rated the certainty as very low, with no clear difference in most time frames, and reported mostly minor side effects (Jenkins et al., <em>JOSPT Open</em>, 2025). Many people still enjoy how it feels as part of a session.</p>
+        <button type="button" class="add" data-focus="Cupping" aria-pressed="false">Add To My Session</button>
       </article>
 
-      <article class="card">
+      <article class="reveal card">
         <span class="tag">Tools</span>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="9" width="18" height="6" rx="3"/><path d="M7 9v6M17 9v6M3 19h18" /></svg></div>
         <h3>Body Tempering</h3>
         <p>Heavy, smooth steel rollers are placed and rolled across large muscle groups while you lie still. The weight does the work, giving broad, even pressure that hands cannot match.</p>
         <p class="feel"><b>Feels like:</b> a deep, heavy, full-body press. <a href="#tempering">See it below.</a></p>
         <p class="evidence"><b>What the research says:</b> body tempering has not been studied in published clinical trials, so we make no medical claims about it.</p>
+        <button type="button" class="add" data-focus="Body Tempering" aria-pressed="false">Add To My Session</button>
       </article>
     </div>
   </div>
@@ -366,20 +419,23 @@ footer li{margin-bottom:8px;color:#c3d4d1}
     <span class="eyebrow">Sessions</span>
     <h2>Choose your time on the table.</h2>
     <div class="grid">
-      <article class="card session">
+      <article class="reveal card session" data-len="60 min" tabindex="0" role="button">
         <div class="len">60<small>min</small></div>
         <h3>Focused</h3>
         <p>Best for one or two problem areas, or a regular tune-up between longer sessions.</p>
+        <span class="pick">Choose This</span>
       </article>
-      <article class="card session">
+      <article class="reveal card session" data-len="90 min" tabindex="0" role="button">
         <div class="len">90<small>min</small></div>
         <h3>Full Chain</h3>
         <p>Room to work the whole line of tissue around the problem and blend two or three modalities.</p>
+        <span class="pick">Choose This</span>
       </article>
-      <article class="card session">
+      <article class="reveal card session" data-len="120 min" tabindex="0" role="button">
         <div class="len">120<small>min</small></div>
         <h3>Deep Reset</h3>
         <p>Head to toe, unhurried. Stretch therapy, hands-on work and tools in a single visit.</p>
+        <span class="pick">Choose This</span>
       </article>
     </div>
     <div class="price-line">
@@ -395,10 +451,10 @@ footer li{margin-bottom:8px;color:#c3d4d1}
     <span class="eyebrow">How Booking Works</span>
     <h2>You pick the time. Sheli confirms.</h2>
     <ol class="steps">
-      <li><h3>Send your request</h3><p>Choose a session length and the day and time you want.</p></li>
-      <li><h3>Sheli confirms</h3><p>She replies by text or email to confirm your time or offer the closest opening.</p></li>
-      <li><h3>Your session</h3><p>A quick check-in on what you feel, then a session built around it.</p></li>
-      <li><h3>Take it home</h3><p>Simple suggestions to help the feeling of relief carry into your week.</p></li>
+      <li class="reveal"><h3>Send your request</h3><p>Choose a session length and the day and time you want.</p></li>
+      <li class="reveal"><h3>Sheli confirms</h3><p>She replies by text or email to confirm your time or offer the closest opening.</p></li>
+      <li class="reveal"><h3>Your session</h3><p>A quick check-in on what you feel, then a session built around it.</p></li>
+      <li class="reveal"><h3>Take it home</h3><p>Simple suggestions to help the feeling of relief carry into your week.</p></li>
     </ol>
   </div>
 </section>
@@ -411,8 +467,8 @@ footer li{margin-bottom:8px;color:#c3d4d1}
       <p>This is a request, not a confirmed booking. Sheli will reach out to confirm your time, usually by text.</p>
       <p><strong>24-hour cancellation policy.</strong> Please give at least 24 hours notice to cancel or reschedule.</p>
       <div class="contact-box">
-        <p style="margin:0 0 6px"><strong>Prefer to talk?</strong></p>
-        <p style="margin:0"><a href="tel:+17328598202">732-859-8202</a><br><a href="mailto:shelidisher@gmail.com">shelidisher@gmail.com</a></p>
+        <p style="margin:0 0 6px"><strong>Prefer to text?</strong></p>
+        <p style="margin:0"><a href="sms:+17328598202">Text 732-859-8202</a><br><a href="mailto:shelidisher@gmail.com">shelidisher@gmail.com</a></p>
       </div>
     </div>
 
@@ -485,14 +541,14 @@ footer li{margin-bottom:8px;color:#c3d4d1}
   <div class="wrap">
     <span class="eyebrow">Questions</span>
     <h2>Before your first session</h2>
-    <details><summary>Where are sessions held?</summary><p>In Oakhurst, New Jersey. The exact address is sent with your confirmation.</p></details>
-    <details><summary>What should I wear?</summary><p>Comfortable, stretchy clothes you can move in. Fascial stretch therapy and body tempering are done clothed. If your session includes oil-based massage or cupping, Sheli will walk you through draping first.</p></details>
-    <details><summary>Will cupping leave marks?</summary><p>Often, yes. Cupping commonly leaves round, bruise-like marks that typically fade over several days to about two weeks. If you have an event coming up, tell Sheli and she can skip cups or keep them off visible areas.</p></details>
-    <details><summary>Does it hurt?</summary><p>It should not. Some pressure can feel intense in a "good hurt" way, but you set the limit. Say the word and Sheli eases off. Relief does not require pain.</p></details>
-    <details><summary>Is there anyone who should check with a doctor first?</summary><p>Yes. Talk to your doctor first if you are pregnant, take blood thinners, have a bleeding or clotting disorder, have had recent surgery or a fracture, or have a skin condition in the area you want worked. Sheli may adjust or skip certain tools, such as cupping, compression or tempering, based on your health history.</p></details>
-    <details><summary>Is this a replacement for medical care?</summary><p>No. Bodywork can be a helpful part of feeling better, but it does not diagnose or treat medical conditions. Sudden, severe or worsening pain, numbness or weakness should be checked by a medical provider.</p></details>
-    <details><summary>What is the cancellation policy?</summary><p>Please give at least 24 hours notice to cancel or reschedule so the time can go to someone else.</p></details>
-    <details><summary>How fast will Sheli confirm my request?</summary><p>She replies as soon as she can, usually by text. If your request is for today or tomorrow, calling is the fastest way: <a href="tel:+17328598202">732-859-8202</a>.</p></details>
+    <details class="reveal"><summary>Where are sessions held?</summary><p>In Oakhurst, New Jersey. The exact address is sent with your confirmation.</p></details>
+    <details class="reveal"><summary>What should I wear?</summary><p>Comfortable, stretchy clothes you can move in. Fascial stretch therapy and body tempering are done clothed. If your session includes oil-based massage or cupping, Sheli will walk you through draping first.</p></details>
+    <details class="reveal"><summary>Will cupping leave marks?</summary><p>Often, yes. Cupping commonly leaves round, bruise-like marks that typically fade over several days to about two weeks. If you have an event coming up, tell Sheli and she can skip cups or keep them off visible areas.</p></details>
+    <details class="reveal"><summary>Does it hurt?</summary><p>It should not. Some pressure can feel intense in a "good hurt" way, but you set the limit. Say the word and Sheli eases off. Relief does not require pain.</p></details>
+    <details class="reveal"><summary>Is there anyone who should check with a doctor first?</summary><p>Yes. Talk to your doctor first if you are pregnant, take blood thinners, have a bleeding or clotting disorder, have had recent surgery or a fracture, or have a skin condition in the area you want worked. Sheli may adjust or skip certain tools, such as cupping, compression or tempering, based on your health history.</p></details>
+    <details class="reveal"><summary>Is this a replacement for medical care?</summary><p>No. Bodywork can be a helpful part of feeling better, but it does not diagnose or treat medical conditions. Sudden, severe or worsening pain, numbness or weakness should be checked by a medical provider.</p></details>
+    <details class="reveal"><summary>What is the cancellation policy?</summary><p>Please give at least 24 hours notice to cancel or reschedule so the time can go to someone else.</p></details>
+    <details class="reveal"><summary>How fast will Sheli confirm my request?</summary><p>She replies as soon as she can, usually by text. If your request is for today or tomorrow, calling is the fastest way: <a href="tel:+17328598202">732-859-8202</a>.</p></details>
   </div>
 </section>
 
@@ -516,7 +572,6 @@ footer li{margin-bottom:8px;color:#c3d4d1}
       <li>Bervoets DC, Luijsterburg PA, Alessie JJ, Buijs MJ, Verhagen AP. Massage therapy has short-term benefits for people with common musculoskeletal disorders compared to no treatment: a systematic review. <em>Journal of Physiotherapy</em>. 2015;61(3):106-116.</li>
       <li>Ajimsha MS, Al-Mudahka NR, Al-Madzhar JA. Effectiveness of myofascial release: systematic review of randomized controlled trials. <em>Journal of Bodywork and Movement Therapies</em>. 2015;19(1):102-112.</li>
       <li>Lu W, Li J, Tian Y, Lu X. Effect of ischemic compression on myofascial pain syndrome: a systematic review and meta-analysis. <em>Chiropractic &amp; Manual Therapies</em>. 2022;30:34.</li>
-      <li>Jenkins LC, et al. The efficacy of dry cupping compared to placebo cupping for people with musculoskeletal complaints: a systematic review with meta-analysis. <em>JOSPT Open</em>. 2025.</li>
     </ol>
   </div>
 </section>
@@ -548,6 +603,8 @@ footer li{margin-bottom:8px;color:#c3d4d1}
   </div>
 </footer>
 
+<div class="picked" id="picked" role="status"><span id="picked-txt"></span><a href="#book">Request</a></div>
+
 <script>
 (function(){
   var API = '';
@@ -566,6 +623,96 @@ footer li{margin-bottom:8px;color:#c3d4d1}
       (el || document.body).scrollIntoView({behavior:'smooth', block:'start'});
     });
   });
+
+  // reveal on scroll
+  var rv = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+    rv.forEach(function(el, i){ el.style.transitionDelay = (i % 3) * 90 + 'ms'; io.observe(el); });
+  } else rv.forEach(function(el){ el.classList.add('in'); });
+
+  // modality cards sync with the form chips
+  var pickedBar = document.getElementById('picked'), pickedTxt = document.getElementById('picked-txt');
+  function focusBox(v){ return document.querySelector('input[name="focus"][value="' + v + '"]'); }
+  function syncPicked(){
+    var on = Array.prototype.filter.call(document.querySelectorAll('input[name="focus"]'), function(b){ return b.checked && b.value !== 'Not sure'; });
+    document.querySelectorAll('.add').forEach(function(btn){ var b = focusBox(btn.dataset.focus); btn.setAttribute('aria-pressed', b && b.checked ? 'true' : 'false'); btn.lastChild.textContent = b && b.checked ? 'Added' : 'Add To My Session'; });
+    var bookTop = document.getElementById('book').getBoundingClientRect().top;
+    pickedTxt.textContent = on.length + (on.length === 1 ? ' modality picked' : ' modalities picked');
+    pickedBar.classList.toggle('show', on.length > 0 && bookTop > window.innerHeight * .6);
+  }
+  document.querySelectorAll('.add').forEach(function(btn){
+    btn.addEventListener('click', function(){ var b = focusBox(btn.dataset.focus); if (b) { b.checked = !b.checked; syncPicked(); } });
+  });
+  document.querySelectorAll('input[name="focus"]').forEach(function(b){ b.addEventListener('change', syncPicked); });
+  window.addEventListener('scroll', syncPicked, {passive:true});
+
+  // session cards pick the length in the form
+  function pickLen(card){
+    document.querySelectorAll('.session').forEach(function(c){ c.classList.toggle('on', c === card); });
+    var r = document.querySelector('input[name="length"][value="' + card.dataset.len + '"]'); if (r) r.checked = true;
+  }
+  document.querySelectorAll('.session').forEach(function(card){
+    card.addEventListener('click', function(){ pickLen(card); });
+    card.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pickLen(card); } });
+  });
+  document.querySelectorAll('input[name="length"]').forEach(function(r){ r.addEventListener('change', function(){ document.querySelectorAll('.session').forEach(function(c){ c.classList.toggle('on', c.dataset.len === r.value); }); }); });
+
+  // fascia web: a spring mesh you can pull
+  (function(){
+    var cv = document.getElementById('web'); if (!cv || !cv.getContext) return;
+    var ctx = cv.getContext('2d'), hint = document.getElementById('web-hint');
+    var COLS = 13, ROWS = 8, pts = [], links = [], W = 0, H = 0, grab = null, idle = 0, still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function build(){
+      var dpr = Math.min(window.devicePixelRatio || 1, 2), r = cv.getBoundingClientRect();
+      W = r.width; H = r.height; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      pts = []; links = [];
+      for (var y = 0; y < ROWS; y++) for (var x = 0; x < COLS; x++) {
+        var px = 14 + x * (W - 28) / (COLS - 1) + (y % 2 ? 6 : 0) * (x > 0 && x < COLS - 1), py = 14 + y * (H - 28) / (ROWS - 1);
+        pts.push({x:px, y:py, ox:px, oy:py, vx:0, vy:0, pin: x === 0 || y === 0 || x === COLS - 1 || y === ROWS - 1, t:0});
+      }
+      for (var i = 0; i < pts.length; i++) {
+        var cx = i % COLS, cy = Math.floor(i / COLS);
+        if (cx < COLS - 1) links.push([i, i + 1]);
+        if (cy < ROWS - 1) links.push([i, i + COLS]);
+        if (cx < COLS - 1 && cy < ROWS - 1) links.push([i, i + COLS + 1]);
+      }
+      links.forEach(function(l){ var a = pts[l[0]], b = pts[l[1]]; l[2] = Math.hypot(a.ox - b.ox, a.oy - b.oy); });
+    }
+    function pos(e){ var r = cv.getBoundingClientRect(); return {x: e.clientX - r.left, y: e.clientY - r.top}; }
+    function nearest(p){ var best = null, d = 1e9; pts.forEach(function(q){ if (q.pin) return; var dd = Math.hypot(q.x - p.x, q.y - p.y); if (dd < d) { d = dd; best = q; } }); return d < 60 ? best : null; }
+    cv.addEventListener('pointerdown', function(e){ grab = nearest(pos(e)); if (grab) { cv.setPointerCapture(e.pointerId); hint.style.opacity = 0; } });
+    cv.addEventListener('pointermove', function(e){ if (!grab) return; var p = pos(e); grab.x = Math.max(4, Math.min(W - 4, p.x)); grab.y = Math.max(4, Math.min(H - 4, p.y)); grab.vx = grab.vy = 0; });
+    ['pointerup', 'pointercancel', 'pointerleave'].forEach(function(t){ cv.addEventListener(t, function(){ grab = null; }); });
+    function step(){
+      for (var k = 0; k < 2; k++) {
+        links.forEach(function(l){
+          var a = pts[l[0]], b = pts[l[1]], dx = b.x - a.x, dy = b.y - a.y, d = Math.hypot(dx, dy) || 1, f = (d - l[2]) / d * 0.08;
+          var fx = dx * f, fy = dy * f;
+          if (!a.pin && a !== grab) { a.vx += fx; a.vy += fy; }
+          if (!b.pin && b !== grab) { b.vx -= fx; b.vy -= fy; }
+          var s = Math.abs(d - l[2]) / l[2]; a.t = Math.max(a.t, s); b.t = Math.max(b.t, s);
+        });
+        pts.forEach(function(p){ if (p.pin || p === grab) return; p.vx += (p.ox - p.x) * 0.004; p.vy += (p.oy - p.y) * 0.004; p.vx *= 0.9; p.vy *= 0.9; p.x += p.vx; p.y += p.vy; });
+      }
+    }
+    function draw(){
+      ctx.clearRect(0, 0, W, H);
+      links.forEach(function(l){
+        var a = pts[l[0]], b = pts[l[1]], d = Math.hypot(b.x - a.x, b.y - a.y), s = Math.min(1, Math.abs(d - l[2]) / l[2] * 4);
+        ctx.strokeStyle = 'rgba(' + Math.round(159 + 68 * s) + ',' + Math.round(179 + 10 * s) + ',' + Math.round(147 - 13 * s) + ',' + (0.35 + 0.6 * s) + ')';
+        ctx.lineWidth = 1 + 1.6 * s; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+      });
+      pts.forEach(function(p){ var s = Math.min(1, p.t * 4); ctx.fillStyle = s > .15 ? '#e3bd86' : '#9fb393'; ctx.beginPath(); ctx.arc(p.x, p.y, p.pin ? 1.5 : 2.4 + 2 * s, 0, 6.3); ctx.fill(); p.t *= 0.85; });
+    }
+    function loop(){
+      idle++;
+      if (!grab && !still && idle % 420 === 200) { var q = pts[Math.floor(ROWS / 2) * COLS + 4]; q.vx += 9; q.vy -= 6; }
+      step(); draw(); requestAnimationFrame(loop);
+    }
+    build(); window.addEventListener('resize', build);
+    if ('IntersectionObserver' in window) { var started = false; new IntersectionObserver(function(es){ if (es[0].isIntersecting && !started) { started = true; loop(); } }).observe(cv); } else loop();
+  })();
 
   // booking request
   var form = document.getElementById('book-form'), msg = document.getElementById('f-msg'), btn = document.getElementById('f-submit');
@@ -588,7 +735,7 @@ footer li{margin-bottom:8px;color:#c3d4d1}
     fetch(API + '/api/booking', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data)})
       .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ if (!r.ok) throw new Error(j.error || 'failed'); return j; }); })
       .then(function(){
-        form.reset();
+        form.reset(); syncPicked(); document.querySelectorAll('.session').forEach(function(c){ c.classList.remove('on'); });
         show('ok', 'Request sent. Sheli will reach out to confirm your time. A copy is on its way to your email.');
       })
       .catch(function(err){
