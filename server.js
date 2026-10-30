@@ -26,6 +26,7 @@ function limited(key, max) {
 setInterval(() => { const now = Date.now(); for (const [k, v] of hits) if (!v.some(t => now - t < 3600e3)) hits.delete(k); }, 600e3).unref();
 
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const digits = s => { const n = String(s || '').replace(/\D/g, ''); return n.length === 11 && n[0] === '1' ? n.slice(1) : n; };
 const clip = (s, n) => String(s == null ? '' : s).trim().slice(0, n);
 
 function send(res, code, body, headers = {}) {
@@ -91,8 +92,8 @@ async function handleBooking(req, res) {
       to: [ALERT_TO], reply_to: d.email,
       subject: `New request: ${d.name}, ${d.length}, ${prettyDate(d.date)}`,
       html: wrap('New session request', `<table style="border-collapse:collapse;font-size:15px">${details}</table>
-<p style="margin-top:20px"><a href="sms:${esc(d.phone)}" style="background:#0b4a55;color:#fff;padding:10px 18px;border-radius:999px;text-decoration:none;font-weight:bold">Text ${esc(d.name.split(' ')[0])}</a>
-&nbsp; <a href="tel:${esc(d.phone)}" style="color:#0b4a55;font-weight:bold">Call</a></p>
+<p style="margin-top:20px"><a href="https://${DOMAIN}/text?to=${digits(d.phone)}&amp;name=${encodeURIComponent(d.name.split(' ')[0])}" style="background:#0b4a55;color:#fff;padding:10px 18px;border-radius:999px;text-decoration:none;font-weight:bold">Text ${esc(d.name.split(' ')[0])}</a>
+&nbsp; <a href="tel:+1${digits(d.phone)}" style="color:#0b4a55;font-weight:bold">Call</a></p>
 <p style="font-size:13px;color:#4f6366">Reply to this email to answer them directly. They agreed to the 24-hour cancellation policy.</p>`)
     });
   } catch (e) {
@@ -114,6 +115,20 @@ async function handleBooking(req, res) {
   json(res, 200, { ok: true });
 }
 
+// Gmail strips sms: links from emails, so the Text button opens this page, which hands off to the phone's Messages app.
+function textPage(res, url) {
+  const to = digits(url.searchParams.get('to'));
+  if (!/^\d{10,15}$/.test(to)) return send(res, 400, 'Invalid number', { 'Content-Type': TYPES['.txt'] });
+  const name = clip(url.searchParams.get('name'), 40);
+  const body = `Hi ${name}, this is Sheli from The Missing Link. Thanks for your session request!`;
+  const sms = `sms:+1${to}?&body=${encodeURIComponent(body)}`;
+  const shown = to.length === 10 ? `${to.slice(0, 3)}-${to.slice(3, 6)}-${to.slice(6)}` : to;
+  send(res, 200, `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Text ${esc(name)}</title>
+<style>body{margin:0;font-family:Arial,sans-serif;background:#f8f5ef;color:#14282b;display:grid;place-items:center;min-height:100vh;text-align:center;padding:24px;box-sizing:border-box}a{display:block;margin:12px auto;max-width:280px;padding:16px;border-radius:999px;font-weight:bold;text-decoration:none;font-size:18px}.t{background:#0b4a55;color:#fff}.c{border:2px solid #0b4a55;color:#0b4a55}</style></head>
+<body><div><p>${esc(name)} &middot; ${esc(shown)}</p><a class="t" href="${esc(sms)}">Open Messages</a><a class="c" href="tel:+1${to}">Call Instead</a></div>
+<script>location.href=${JSON.stringify(sms)};</script></body></html>`, { 'Content-Type': TYPES['.html'], 'Cache-Control': 'no-store' });
+}
+
 const server = http.createServer(async (req, res) => {
   try {
     const host = (req.headers.host || '').toLowerCase();
@@ -124,6 +139,7 @@ const server = http.createServer(async (req, res) => {
       if (req.method !== 'POST') return json(res, 405, { error: 'Method not allowed.' });
       return await handleBooking(req, res);
     }
+    if (url.pathname === '/text') return textPage(res, url);
     if (url.pathname === '/healthz') return send(res, 200, 'ok');
     if (url.pathname === '/robots.txt') return send(res, 200, ROBOTS, { 'Content-Type': TYPES['.txt'] });
     if (url.pathname === '/sitemap.xml') return send(res, 200, SITEMAP, { 'Content-Type': TYPES['.xml'] });
