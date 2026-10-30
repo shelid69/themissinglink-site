@@ -50,7 +50,7 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--cream);color:var(--ink);font-family:Manrope,system-ui,sans-serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
-img,video{max-width:100%;display:block}
+img,video{max-width:100%;height:auto;display:block}
 a{color:var(--teal-2)}
 h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.15;margin:0 0 .5em;color:var(--deep)}
 h1{font-size:clamp(2.3rem,5.6vw,4rem);letter-spacing:-.01em}
@@ -87,7 +87,7 @@ section{padding:88px 0}
 .badges li{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:.86rem;font-weight:600;color:var(--teal)}
 .hero-art{position:relative;aspect-ratio:1;display:grid;place-items:center}
 .hero-art::before{content:"";position:absolute;inset:6%;border-radius:50%;background:radial-gradient(circle at 50% 40%,var(--sand-soft),var(--sage-soft) 70%)}
-.hero-art img{position:relative;width:78%}
+.hero-art img{position:relative;width:78%;height:auto;object-fit:contain}
 
 /* fascia explainer */
 .fascia{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
