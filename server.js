@@ -83,7 +83,7 @@ async function handleBooking(req, res) {
   if (b.ack !== true) return json(res, 400, { error: 'Please check the box to confirm you understand this is a request.' });
 
   const ip = (req.headers['x-forwarded-for'] || req.socket.remoteAddress || '').split(',')[0].trim();
-  if (limited('ip:' + ip, 8) || limited('em:' + d.email, 4)) return json(res, 429, { error: `Too many requests. Please call or text ${PHONE}.` });
+  if (limited('ip:' + ip, 8) || limited('em:' + d.email, 4)) return json(res, 429, { error: `Too many requests. Please text ${PHONE}.` });
 
   const when = `${prettyDate(d.date)} at ${d.time}`;
   const first = d.name.split(' ')[0], num = digits(d.phone);
@@ -107,17 +107,17 @@ async function handleBooking(req, res) {
     });
   } catch (e) {
     console.error('alert email failed', e.message);
-    return json(res, 502, { error: `We could not send your request. Please call or text ${PHONE}.` });
+    return json(res, 502, { error: `We could not send your request. Please text ${PHONE}.` });
   }
 
   try {
     await resend({
       to: [d.email], reply_to: ALERT_TO,
       subject: 'We got your session request',
-      html: wrap(`Thanks, ${d.name.split(' ')[0]}`, `<p>Sheli received your request and will reach out to confirm your time, usually by text. Your session is not booked until she confirms.</p>
+      html: wrap(`Thanks, ${d.name.split(' ')[0]}`, `<p>Sheli received your request and will reply within 24 hours or sooner to confirm your time. Your session is not booked until she confirms.</p>
 <table style="border-collapse:collapse;font-size:15px">${row('Session', d.length)}${row('Preferred', when)}${row('Backup', d.alt)}</table>
 <p><strong>24-hour cancellation policy:</strong> please give at least 24 hours notice to cancel or reschedule.</p>
-<p>Questions? Call or text ${PHONE}.</p>`)
+<p>Questions? Text <a href="sms:+17328598202">${PHONE}</a> for the fastest reply.</p>`)
     });
   } catch (e) { console.error('confirmation email failed', e.message); } // alert already sent, so the request still counts
 

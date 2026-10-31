@@ -184,10 +184,6 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--teal-2);outline-
 .faq details[open] summary::after{content:"\2212"}
 .faq details p{color:var(--muted);margin-bottom:18px}
 
-/* sources */
-.sources{padding:56px 0;background:var(--paper);border-top:1px solid var(--line)}
-.sources ol{font-size:.86rem;color:var(--muted);padding-left:20px;margin:0}
-.sources li{margin-bottom:8px}
 
 /* cta + footer */
 .cta{background:var(--teal);color:#fff;text-align:center}
@@ -315,7 +311,7 @@ footer li{margin-bottom:8px;color:#c3d4d1}
       <p class="lead">Hands-on work for the connective tissue that wraps every muscle in your body. Sheli blends fascial stretch therapy, soft tissue work, compression, cupping and body tempering into one session built around how your body feels that day.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#book">Request Your Time</a>
-        <a class="btn btn-ghost" href="tel:+17328598202">Call 732-859-8202</a>
+        <a class="btn btn-ghost" href="sms:+17328598202">Text 732-859-8202</a>
       </div>
       <ul class="badges">
         <li>Massage Trained Since 2008</li>
@@ -336,22 +332,15 @@ footer li{margin-bottom:8px;color:#c3d4d1}
     <div>
       <span class="eyebrow">Start Here</span>
       <h2>What fascia actually is</h2>
-      <p>Fascia is the connective tissue that surrounds and links your muscles, organs, nerves and vessels. An international group of fascia researchers describes it as a continuous system that runs through the whole body rather than a set of separate wrappers (Adstrum et al., <em>Journal of Bodywork and Movement Therapies</em>, 2017).</p>
+      <p>Fascia is the connective tissue that surrounds and links your muscles, organs, nerves and vessels. It forms one continuous web through the whole body rather than a set of separate wrappers.</p>
       <p>That is why tightness rarely stays in one spot. A stiff calf can show up as a sore foot. A guarded shoulder can pull on the neck. Sheli works the whole chain, not only the place that hurts.</p>
-      <div class="web-demo">
+    </div>
+    <div>
+      <div class="web-demo" style="margin-top:0">
         <span class="hint" id="web-hint">Touch and pull the web</span>
         <canvas id="web" aria-label="Interactive web: pull one point and watch the tension spread"></canvas>
         <p>An illustration, not anatomy: pull one point and watch the tension travel.</p>
       </div>
-    </div>
-    <div class="reveal web">
-      <h3>The honest version of how relief happens</h3>
-      <p>You will hear that massage "breaks up" or "releases" fascia. The science is more interesting than that.</p>
-      <ul>
-        <li><strong>Dense fascia is very tough.</strong> One modeling study estimated that deforming thick fascia like the IT band by even 1% would take forces far beyond what human hands produce (Chaudhry et al., <em>Journal of the American Osteopathic Association</em>, 2008).</li>
-        <li><strong>So the change you feel is likely your nervous system.</strong> Pressure, stretch and slow movement send new signals to the brain, which may lower muscle guarding and ease how sensitive an area feels.</li>
-        <li><strong>That is good news.</strong> It means a calm, skilled session can shift how your body feels without force or pain.</li>
-      </ul>
     </div>
   </div>
 </section>
@@ -370,7 +359,6 @@ footer li{margin-bottom:8px;color:#c3d4d1}
         <h3>Fascial Stretch Therapy</h3>
         <p>An assisted, table-based stretching method. Sheli moves your limbs through slow, pain-free ranges while you breathe, working through whole lines of tissue from the hips and spine out to the limbs.</p>
         <p class="feel"><b>Feels like:</b> gentle, rhythmic traction. You stay fully clothed.</p>
-        <p class="evidence"><b>What the research says:</b> Fascial Stretch Therapy has little published clinical research behind it, so we make no medical claims about it. It is offered for comfort and ease of movement.</p>
         <button type="button" class="add" data-focus="Fascial Stretch Therapy" aria-pressed="false">Add To My Session</button>
       </article>
 
@@ -381,7 +369,6 @@ footer li{margin-bottom:8px;color:#c3d4d1}
         <h3>Spontaneous Muscle Release Technique</h3>
         <p>SMRT places a tight muscle in a position of comfort and holds it there, giving the nervous system a chance to let the muscle soften on its own. It is quiet, precise and very low force.</p>
         <p class="feel"><b>Feels like:</b> being placed and supported, then a slow let-go.</p>
-        <p class="evidence"><b>What the research says:</b> SMRT has not been studied by name in published clinical trials, so we make no medical claims about it. Many clients choose it when deeper pressure feels like too much.</p>
         <button type="button" class="add" data-focus="SMRT" aria-pressed="false">Add To My Session</button>
       </article>
 
@@ -392,7 +379,6 @@ footer li{margin-bottom:8px;color:#c3d4d1}
         <h3>Soft Tissue Manipulation</h3>
         <p>Classic massage strokes and myofascial work that glide, knead and hold across muscle and fascia, adjusted from light to deep based on what your body tolerates that day.</p>
         <p class="feel"><b>Feels like:</b> steady, warming pressure that follows the tissue.</p>
-        <p class="evidence"><b>What the research says:</b> a review of 26 trials found massage reduced pain and improved function in the short term compared with no treatment for some musculoskeletal conditions, without a clear edge over other active treatments (Bervoets et al., <em>Journal of Physiotherapy</em>, 2015). A review of myofascial release trials reported encouraging but mixed results of varying quality (Ajimsha et al., <em>Journal of Bodywork and Movement Therapies</em>, 2015).</p>
         <button type="button" class="add" data-focus="Soft Tissue" aria-pressed="false">Add To My Session</button>
       </article>
 
@@ -403,7 +389,6 @@ footer li{margin-bottom:8px;color:#c3d4d1}
         <h3>Compression</h3>
         <p>Sustained, direct pressure on a tender point or band of tight tissue, held until it starts to ease. Often used on the knots people point to and say "right there."</p>
         <p class="feel"><b>Feels like:</b> a focused "good hurt" that fades as you breathe.</p>
-        <p class="evidence"><b>What the research says:</b> a 2022 meta-analysis found sustained compression on trigger points raised how much pressure people could tolerate before pain, though it did not clearly lower their reported pain scores. The trials were small (Lu et al., <em>Chiropractic &amp; Manual Therapies</em>, 2022).</p>
         <button type="button" class="add" data-focus="Compression" aria-pressed="false">Add To My Session</button>
       </article>
 
@@ -424,7 +409,6 @@ footer li{margin-bottom:8px;color:#c3d4d1}
         <h3>Body Tempering</h3>
         <p>Heavy, smooth steel rollers are placed and rolled across large muscle groups while you lie still. The weight does the work, giving broad, even pressure that hands cannot match.</p>
         <p class="feel"><b>Feels like:</b> a deep, heavy, full-body press. <a href="#tempering">See it below.</a></p>
-        <p class="evidence"><b>What the research says:</b> body tempering has not been studied in published clinical trials, so we make no medical claims about it.</p>
         <button type="button" class="add" data-focus="Body Tempering" aria-pressed="false">Add To My Session</button>
       </article>
     </div>
@@ -443,7 +427,6 @@ footer li{margin-bottom:8px;color:#c3d4d1}
         <li>Even pressure with no sharp points</li>
         <li>A slow, heavy rhythm many people find calming</li>
       </ul>
-      <p class="evidence"><b>What the research says:</b> body tempering has not been studied in published clinical trials, so we make no medical claims about it. It is offered for how it feels and as one tool within a session.</p>
     </div>
   </div>
 </section>
@@ -501,7 +484,7 @@ footer li{margin-bottom:8px;color:#c3d4d1}
     <h2>You pick the time. Sheli confirms.</h2>
     <ol class="steps">
       <li class="reveal"><h3>Send your request</h3><p>Choose a session length and the day and time you want.</p></li>
-      <li class="reveal"><h3>Sheli confirms</h3><p>She replies by text or email to confirm your time or offer the closest opening.</p></li>
+      <li class="reveal"><h3>Sheli confirms</h3><p>She replies within 24 hours or sooner to confirm your time or offer the closest opening.</p></li>
       <li class="reveal"><h3>Your session</h3><p>A quick check-in on what you feel, then a session built around it.</p></li>
       <li class="reveal"><h3>Take it home</h3><p>Simple suggestions to help the feeling of relief carry into your week.</p></li>
     </ol>
@@ -513,7 +496,7 @@ footer li{margin-bottom:8px;color:#c3d4d1}
     <div>
       <span class="eyebrow">Request A Session</span>
       <h2>Tell Sheli when you want to come in.</h2>
-      <p>This is a request, not a confirmed booking. Sheli will reach out to confirm your time, usually by text.</p>
+      <p>This is a request, not a confirmed booking. Sheli replies within 24 hours or sooner to confirm your time. Texting gets the fastest reply.</p>
       <p><strong>24-hour cancellation policy.</strong> Please give at least 24 hours notice to cancel or reschedule.</p>
       <div class="contact-box">
         <p style="margin:0 0 6px"><strong>Prefer to text?</strong></p>
@@ -597,33 +580,21 @@ footer li{margin-bottom:8px;color:#c3d4d1}
     <details class="reveal"><summary>Is there anyone who should check with a doctor first?</summary><p>Yes. Talk to your doctor first if you are pregnant, take blood thinners, have a bleeding or clotting disorder, have had recent surgery or a fracture, or have a skin condition in the area you want worked. Sheli may adjust or skip certain tools, such as cupping, compression or tempering, based on your health history.</p></details>
     <details class="reveal"><summary>Is this a replacement for medical care?</summary><p>No. Bodywork can be a helpful part of feeling better, but it does not diagnose or treat medical conditions. Sudden, severe or worsening pain, numbness or weakness should be checked by a medical provider.</p></details>
     <details class="reveal"><summary>What is the cancellation policy?</summary><p>Please give at least 24 hours notice to cancel or reschedule so the time can go to someone else.</p></details>
-    <details class="reveal"><summary>How fast will Sheli confirm my request?</summary><p>She replies as soon as she can, usually by text. If your request is for today or tomorrow, calling is the fastest way: <a href="tel:+17328598202">732-859-8202</a>.</p></details>
+    <details class="reveal"><summary>How fast will Sheli confirm my request?</summary><p>Within 24 hours or sooner. Texting gets the fastest reply: <a href="sms:+17328598202">732-859-8202</a>.</p></details>
   </div>
 </section>
 
 <section class="cta">
   <div class="wrap">
     <h2>Your body is connected. Your care should be too.</h2>
-    <p>Pick a time that works for you and Sheli will confirm it.</p>
+    <p>Pick a time that works for you. Sheli replies within 24 hours or sooner, and texting gets the fastest reply.</p>
     <div class="hero-actions">
       <a class="btn btn-sand" href="#book">Request A Session</a>
-      <a class="btn btn-ghost" href="tel:+17328598202">Call 732-859-8202</a>
+      <a class="btn btn-ghost" href="sms:+17328598202">Text 732-859-8202</a>
     </div>
   </div>
 </section>
 
-<section class="sources" id="sources">
-  <div class="wrap">
-    <h3>Research referenced on this page</h3>
-    <ol>
-      <li>Adstrum S, Hedley G, Schleip R, Stecco C, Yucesoy CA. Defining the fascial system. <em>Journal of Bodywork and Movement Therapies</em>. 2017;21(1):173-177.</li>
-      <li>Chaudhry H, Schleip R, Ji Z, Bukiet B, Maney M, Findley T. Three-dimensional mathematical model for deformation of human fasciae in manual therapy. <em>Journal of the American Osteopathic Association</em>. 2008;108(8):379-390.</li>
-      <li>Bervoets DC, Luijsterburg PA, Alessie JJ, Buijs MJ, Verhagen AP. Massage therapy has short-term benefits for people with common musculoskeletal disorders compared to no treatment: a systematic review. <em>Journal of Physiotherapy</em>. 2015;61(3):106-116.</li>
-      <li>Ajimsha MS, Al-Mudahka NR, Al-Madzhar JA. Effectiveness of myofascial release: systematic review of randomized controlled trials. <em>Journal of Bodywork and Movement Therapies</em>. 2015;19(1):102-112.</li>
-      <li>Lu W, Li J, Tian Y, Lu X. Effect of ischemic compression on myofascial pain syndrome: a systematic review and meta-analysis. <em>Chiropractic &amp; Manual Therapies</em>. 2022;30:34.</li>
-    </ol>
-  </div>
-</section>
 
 </main>
 
@@ -637,7 +608,7 @@ footer li{margin-bottom:8px;color:#c3d4d1}
       <h3>Contact</h3>
       <ul>
         <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Oakhurst%2C+NJ+07755" target="_blank" rel="noopener">Oakhurst, NJ 07755</a></li>
-        <li><a href="tel:+17328598202">732-859-8202</a></li>
+        <li><a href="sms:+17328598202">Text 732-859-8202</a></li>
         <li><a href="mailto:shelidisher@gmail.com">shelidisher@gmail.com</a></li>
       </ul>
     </div>
@@ -648,7 +619,7 @@ footer li{margin-bottom:8px;color:#c3d4d1}
         <li><a href="https://share.google/usdDrx7jQmydq6lJi" target="_blank" rel="noopener">Google Profile</a></li>
       </ul>
     </div>
-    <p class="legal">&copy; <span id="yr">2026</span> The Missing Link. Bodywork on this site is not medical treatment and is not a substitute for care from a licensed medical provider. Research summaries are provided for education and describe study findings, not promised results.</p>
+    <p class="legal">&copy; <span id="yr">2026</span> The Missing Link. Bodywork on this site is not medical treatment and is not a substitute for care from a licensed medical provider.</p>
   </div>
 </footer>
 
@@ -794,10 +765,10 @@ footer li{margin-bottom:8px;color:#c3d4d1}
       .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ if (!r.ok) throw new Error(j.error || 'failed'); return j; }); })
       .then(function(){
         form.reset(); syncPicked(); document.querySelectorAll('.session').forEach(function(c){ c.classList.remove('on'); });
-        show('ok', 'Request sent. Sheli will reach out to confirm your time. A copy is on its way to your email.');
+        show('ok', 'Request sent. Sheli will reply within 24 hours or sooner. A copy is on its way to your email.');
       })
       .catch(function(err){
-        show('err', (err && err.message && err.message !== 'failed' && err.message !== 'Failed to fetch') ? err.message : 'Something went wrong sending your request. Please call or text 732-859-8202.');
+        show('err', (err && err.message && err.message !== 'failed' && err.message !== 'Failed to fetch') ? err.message : 'Something went wrong sending your request. Please text 732-859-8202.');
       })
       .then(function(){ btn.disabled = false; btn.textContent = 'Send My Request'; });
   });
