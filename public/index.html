@@ -15,7 +15,7 @@
 <meta property="og:title" content="The Missing Link | Fascia, Cupping &amp; Massage in Oakhurst, NJ">
 <meta property="og:description" content="Fascial stretch therapy, SMRT, soft tissue work, compression, cupping and body tempering with Sheli. Request your session time online.">
 <meta property="og:url" content="https://themissinglink.co/">
-<meta property="og:image" content="https://themissinglink.co/logo.png">
+<meta property="og:image" content="https://themissinglink.co/photos/hero-cupping.jpg">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -228,6 +228,31 @@ footer li{margin-bottom:8px;color:#c3d4d1}
   footer .wrap{grid-template-columns:1fr}
 }
 
+/* photos */
+.hero-art{aspect-ratio:auto;display:block;position:relative}
+.hero-art::before{content:none}
+.hero-art img{animation:none}
+.hero-art .hero-photo{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:52% 50%;border-radius:240px 240px 26px 26px;box-shadow:0 30px 60px -30px rgba(10,47,53,.55)}
+.hero-badge{position:absolute;left:-18px;bottom:28px;width:104px;height:104px;border-radius:50%;background:var(--cream);display:grid;place-items:center;box-shadow:0 14px 30px -14px rgba(10,47,53,.6);border:3px solid var(--sand-soft);animation:float 7s ease-in-out infinite}
+.hero-art .hero-badge img{width:62px;height:auto;object-fit:contain}
+.card-img{width:calc(100% + 56px);max-width:none;margin:-28px -28px 0;aspect-ratio:4/3;object-fit:cover;border-radius:var(--radius) var(--radius) 0 0;transition:transform .5s ease}
+#modalities .card{overflow:hidden}
+#modalities .icon{margin-top:-30px;position:relative;border:3px solid var(--field)}
+.card:hover .card-img{transform:scale(1.04)}
+.gallery{padding-top:0}
+.gal{display:grid;grid-template-columns:1.1fr 1fr 1fr;grid-auto-rows:240px;gap:14px;margin-top:32px}
+.g-item{padding:0;border:0;border-radius:var(--radius);overflow:hidden;cursor:zoom-in;background:var(--paper);display:block}
+.g-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.g-item:hover img{transform:scale(1.05)}
+.g-tall{grid-row:span 2}
+.g-wide{grid-column:span 2}
+.lightbox{position:fixed;inset:0;z-index:100;background:rgba(10,30,34,.92);display:grid;place-items:center;padding:20px}
+.lightbox[hidden]{display:none}
+.lightbox img{max-width:100%;max-height:88vh;border-radius:14px}
+.lb-close{position:absolute;top:14px;right:16px;width:46px;height:46px;border-radius:50%;border:0;background:var(--cream);color:var(--deep);font-size:1.8rem;line-height:1;cursor:pointer}
+@media (max-width:960px){.hero-art{max-width:440px;margin:0 auto;order:0}.hero-badge{left:-6px}}
+@media (max-width:600px){.hero-art{max-width:100%}.hero-badge{width:84px;height:84px}.hero-art .hero-badge img{width:50px}.gal{grid-template-columns:1fr 1fr;grid-auto-rows:180px}.g-wide{grid-column:span 2}}
+
 /* interactive layer */
 .card{transition:transform .25s ease,box-shadow .25s ease,border-color .25s}
 .card:hover{transform:translateY(-4px);box-shadow:0 18px 40px -22px rgba(10,47,53,.45);border-color:var(--sage)}
@@ -241,8 +266,8 @@ footer li{margin-bottom:8px;color:#c3d4d1}
 .add::before{content:"+";font-size:1.1rem;line-height:1}
 .add[aria-pressed=true]{background:var(--teal);color:#fff}
 .add[aria-pressed=true]::before{content:"\2713"}
-.picked{position:fixed;left:50%;bottom:18px;transform:translate(-50%,140%);z-index:60;background:var(--deep);color:#fff;border-radius:999px;padding:10px 10px 10px 20px;display:flex;align-items:center;gap:14px;box-shadow:0 14px 40px -12px rgba(0,0,0,.5);transition:transform .35s ease;font-weight:600;font-size:.92rem;white-space:nowrap}
-.picked.show{transform:translate(-50%,0)}
+.picked{visibility:hidden;position:fixed;left:50%;bottom:18px;transform:translate(-50%,140%);z-index:60;background:var(--deep);color:#fff;border-radius:999px;padding:10px 10px 10px 20px;display:flex;align-items:center;gap:14px;box-shadow:0 14px 40px -12px rgba(0,0,0,.5);transition:transform .35s ease;font-weight:600;font-size:.92rem;white-space:nowrap}
+.picked.show{visibility:visible;transform:translate(-50%,0)}
 .picked a{background:var(--sand);color:var(--deep);padding:8px 16px;border-radius:999px;text-decoration:none;font-weight:700}
 .session{cursor:pointer;border-width:2px}
 .session.on{border-color:var(--teal);box-shadow:0 0 0 4px rgba(11,74,85,.12)}
@@ -299,7 +324,10 @@ footer li{margin-bottom:8px;color:#c3d4d1}
         <li>Sessions From $135</li>
       </ul>
     </div>
-    <div class="hero-art"><img src="logo.png" alt="" width="460" height="546"></div>
+    <div class="hero-art">
+      <img class="hero-photo" src="photos/hero-cupping.jpg" alt="Sheli working a client's calf with silicone cups" width="960" height="644" fetchpriority="high">
+      <span class="hero-badge"><img src="logo.png" alt="" width="64" height="76"></span>
+    </div>
   </div>
 </section>
 
@@ -336,6 +364,7 @@ footer li{margin-bottom:8px;color:#c3d4d1}
 
     <div class="grid">
       <article class="reveal card">
+        <img class="card-img" src="photos/fst.jpg" alt="Assisted leg stretch on the table" loading="lazy" style="object-position:50% 30%">
         <span class="tag">Certified</span>
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h18M6 8l-3 4 3 4M18 8l3 4-3 4"/><path d="M9 12c1-3 5-3 6 0" /></svg></div>
         <h3>Fascial Stretch Therapy</h3>
@@ -346,6 +375,7 @@ footer li{margin-bottom:8px;color:#c3d4d1}
       </article>
 
       <article class="reveal card">
+        <img class="card-img" src="photos/smrt.jpg" alt="Seated assisted release with the client supported" loading="lazy" style="object-position:50% 40%">
         <span class="tag">Certified</span>
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15c3 0 3-6 6-6s3 6 6 6 3-6 6-6"/><circle cx="12" cy="19" r="1.4"/></svg></div>
         <h3>Spontaneous Muscle Release Technique</h3>
@@ -356,6 +386,7 @@ footer li{margin-bottom:8px;color:#c3d4d1}
       </article>
 
       <article class="reveal card">
+        <img class="card-img" src="photos/soft-tissue.jpg" alt="Hands-on work along the calf and foot" loading="lazy" style="object-position:55% 50%">
         <span class="tag">Hands On</span>
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 11V6a1.5 1.5 0 0 1 3 0v4M10 10V4.5a1.5 1.5 0 0 1 3 0V10M13 10V5.5a1.5 1.5 0 0 1 3 0V12M16 12V8.5a1.5 1.5 0 0 1 3 0V14a7 7 0 0 1-7 7h-1a6 6 0 0 1-5-3l-2.6-4.4a1.5 1.5 0 0 1 2.6-1.5L7 14"/></svg></div>
         <h3>Soft Tissue Manipulation</h3>
@@ -366,6 +397,7 @@ footer li{margin-bottom:8px;color:#c3d4d1}
       </article>
 
       <article class="reveal card">
+        <img class="card-img" src="photos/compression.jpg" alt="Sustained thumb pressure on a tight spot in the back" loading="lazy" style="object-position:35% 45%">
         <span class="tag">Hands On</span>
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v9M8 8l4 4 4-4"/><path d="M4 18c2.5-2 5.5-3 8-3s5.5 1 8 3"/><path d="M4 21h16"/></svg></div>
         <h3>Compression</h3>
@@ -376,6 +408,7 @@ footer li{margin-bottom:8px;color:#c3d4d1}
       </article>
 
       <article class="reveal card">
+        <img class="card-img" src="photos/cupping.jpg" alt="Silicone cups placed across the upper back" loading="lazy" style="object-position:50% 45%">
         <span class="tag">Tools</span>
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h12l-1.5 9a2 2 0 0 1-2 1.7h-5a2 2 0 0 1-2-1.7z"/><path d="M5 21h14M12 3v2M8.5 4l.7 1.6M15.5 4l-.7 1.6"/></svg></div>
         <h3>Cupping</h3>
@@ -385,6 +418,7 @@ footer li{margin-bottom:8px;color:#c3d4d1}
       </article>
 
       <article class="reveal card">
+        <img class="card-img" src="photos/tempering-roller.jpg" alt="Client holding a steel tempering roller" loading="lazy" style="object-position:50% 72%">
         <span class="tag">Tools</span>
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="9" width="18" height="6" rx="3"/><path d="M7 9v6M17 9v6M3 19h18" /></svg></div>
         <h3>Body Tempering</h3>
@@ -413,6 +447,21 @@ footer li{margin-bottom:8px;color:#c3d4d1}
     </div>
   </div>
 </section>
+
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <span class="eyebrow">Inside A Session</span>
+    <h2>The work, up close.</h2>
+    <div class="gal">
+      <button type="button" class="reveal g-item g-tall" data-src="photos/back-cupping.jpg"><img src="photos/back-cupping.jpg" alt="Cups placed around a tattooed back" loading="lazy"></button>
+      <button type="button" class="reveal g-item" data-src="photos/red-light-cupping.jpg"><img src="photos/red-light-cupping.jpg" alt="Cupping on the back under a warm red lamp" loading="lazy"></button>
+      <button type="button" class="reveal g-item" data-src="photos/shoulder-cupping.jpg"><img src="photos/shoulder-cupping.jpg" alt="Client resting with cups along the shoulder and chest" loading="lazy" style="object-position:50% 60%"></button>
+      <button type="button" class="reveal g-item g-wide" data-src="photos/cork-tools.jpg"><img src="photos/cork-tools.jpg" alt="Cork massage ball, peanut ball and roller" loading="lazy"></button>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" hidden><button type="button" class="lb-close" aria-label="Close photo">&times;</button><img alt=""></div>
 
 <section class="sessions" id="sessions">
   <div class="wrap">
@@ -623,6 +672,15 @@ footer li{margin-bottom:8px;color:#c3d4d1}
       (el || document.body).scrollIntoView({behavior:'smooth', block:'start'});
     });
   });
+
+  // gallery lightbox
+  var lb = document.getElementById('lightbox'), lbImg = lb.querySelector('img'), lbFrom = null;
+  function lbClose(){ lb.hidden = true; lbImg.src = ''; document.body.style.overflow = ''; if (lbFrom) lbFrom.focus(); }
+  document.querySelectorAll('.g-item').forEach(function(b){
+    b.addEventListener('click', function(){ lbFrom = b; lbImg.src = b.dataset.src; lbImg.alt = b.querySelector('img').alt; lb.hidden = false; document.body.style.overflow = 'hidden'; lb.querySelector('.lb-close').focus(); });
+  });
+  lb.addEventListener('click', function(e){ if (e.target !== lbImg) lbClose(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !lb.hidden) lbClose(); });
 
   // reveal on scroll
   var rv = document.querySelectorAll('.reveal');
