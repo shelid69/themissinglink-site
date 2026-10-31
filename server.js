@@ -52,6 +52,8 @@ function prettyDate(d) {
   return isNaN(t) ? d : t.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
 }
 
+const L = 'color:#0b4a55;font-weight:bold;text-decoration:underline';
+function linkRow(label, html) { return `<tr><td style="padding:6px 12px 6px 0;color:#4f6366;vertical-align:top;white-space:nowrap">${esc(label)}</td><td style="padding:6px 0">${html}</td></tr>`; }
 function row(label, value) {
   return value ? `<tr><td style="padding:6px 12px 6px 0;color:#4f6366;vertical-align:top;white-space:nowrap">${esc(label)}</td><td style="padding:6px 0;color:#14282b">${esc(value).replace(/\n/g, '<br>')}</td></tr>` : '';
 }
@@ -84,7 +86,12 @@ async function handleBooking(req, res) {
   if (limited('ip:' + ip, 8) || limited('em:' + d.email, 4)) return json(res, 429, { error: `Too many requests. Please call or text ${PHONE}.` });
 
   const when = `${prettyDate(d.date)} at ${d.time}`;
-  const details = row('Name', d.name) + row('Phone', d.phone) + row('Email', d.email) + row('Session', d.length) +
+  const first = d.name.split(' ')[0], num = digits(d.phone);
+  const tel = `tel:+1${num}`, txt = `https://${DOMAIN}/text?to=${num}&amp;name=${encodeURIComponent(first)}`;
+  const mail = `mailto:${esc(d.email)}?subject=${encodeURIComponent('Your session request with The Missing Link')}`;
+  const details = row('Name', d.name) +
+    linkRow('Phone', `<a href="${tel}" style="${L}">${esc(d.phone)}</a> &nbsp;<a href="${txt}" style="${L}">Text</a>`) +
+    linkRow('Email', `<a href="${mail}" style="${L}">${esc(d.email)}</a>`) + row('Session', d.length) +
     row('Preferred', when) + row('Backup', d.alt) + row('Interested in', d.focus.join(', ')) + row('Where they feel it', d.area) + row('Heard via', d.heard);
 
   try {
@@ -95,7 +102,7 @@ async function handleBooking(req, res) {
 <p style="margin-top:20px"><a href="https://${DOMAIN}/text?to=${digits(d.phone)}&amp;name=${encodeURIComponent(d.name.split(' ')[0])}" style="background:#0b4a55;color:#fff;padding:10px 18px;border-radius:999px;text-decoration:none;font-weight:bold">Text ${esc(d.name.split(' ')[0])}</a>
 &nbsp; <a href="mailto:${esc(d.email)}?subject=${encodeURIComponent('Your session request with The Missing Link')}&amp;body=${encodeURIComponent(`Hi ${d.name.split(' ')[0]},\n\nThanks for your request for a ${d.length} session on ${prettyDate(d.date)} at ${d.time}.\n\n`)}" style="background:#e3bd86;color:#0a2f35;padding:10px 18px;border-radius:999px;text-decoration:none;font-weight:bold">Email ${esc(d.name.split(' ')[0])}</a>
 &nbsp; <a href="tel:+1${digits(d.phone)}" style="color:#0b4a55;font-weight:bold">Call</a></p>
-<p style="font-size:14px;color:#14282b">Phone: ${esc(d.phone)} &middot; Email: ${esc(d.email)}</p>
+<p style="font-size:14px;color:#14282b">Phone: <a href="${tel}" style="${L}">${esc(d.phone)}</a> &middot; Email: <a href="${mail}" style="${L}">${esc(d.email)}</a></p>
 <p style="font-size:13px;color:#4f6366">Reply to this email to answer them directly. They agreed to the 24-hour cancellation policy.</p>`)
     });
   } catch (e) {
