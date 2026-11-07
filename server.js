@@ -6,8 +6,8 @@ const path = require('path');
 const PORT = process.env.PORT || 3000;
 const DOMAIN = process.env.SITE_DOMAIN || 'themissinglink.co';
 const ALERT_TO = process.env.ALERT_TO || 'shelidisher@gmail.com';
-const MAIL_FROM = process.env.MAIL_FROM || `The Missing Link <booking@${DOMAIN}>`;
-const FALLBACK_FROM = 'The Missing Link <onboarding@resend.dev>'; // works before the domain is verified, alerts to the Resend account owner only
+const MAIL_FROM = process.env.MAIL_FROM || `Knead by Massage Sheli <booking@${DOMAIN}>`;
+const FALLBACK_FROM = 'Knead by Massage Sheli <onboarding@resend.dev>'; // works before the domain is verified, alerts to the Resend account owner only
 const PHONE = '732-859-8202';
 const PUBLIC = path.join(__dirname, 'public');
 
@@ -60,7 +60,7 @@ function row(label, value) {
 function wrap(title, inner) {
   return `<div style="font-family:Arial,sans-serif;max-width:560px;margin:0 auto;padding:24px;background:#f8f5ef;color:#14282b">
 <h2 style="font-family:Georgia,serif;color:#0a2f35;margin:0 0 16px">${esc(title)}</h2>${inner}
-<p style="margin-top:24px;font-size:13px;color:#4f6366">The Missing Link &middot; Oakhurst, NJ &middot; ${PHONE}</p></div>`;
+<p style="margin-top:24px;font-size:13px;color:#4f6366">Knead by Massage Sheli &middot; The Missing Link &middot; Oakhurst, NJ &middot; Text ${PHONE}</p></div>`;
 }
 
 async function handleBooking(req, res) {
@@ -88,7 +88,7 @@ async function handleBooking(req, res) {
   const when = `${prettyDate(d.date)} at ${d.time}`;
   const first = d.name.split(' ')[0], num = digits(d.phone);
   const tel = `tel:+1${num}`, txt = `https://${DOMAIN}/text?to=${num}&amp;name=${encodeURIComponent(first)}`;
-  const mail = `mailto:${esc(d.email)}?subject=${encodeURIComponent('Your session request with The Missing Link')}`;
+  const mail = `mailto:${esc(d.email)}?subject=${encodeURIComponent('Your session request with Knead by Massage Sheli')}`;
   const details = row('Name', d.name) +
     linkRow('Phone', `<a href="${tel}" style="${L}">${esc(d.phone)}</a> &nbsp;<a href="${txt}" style="${L}">Text</a>`) +
     linkRow('Email', `<a href="${mail}" style="${L}">${esc(d.email)}</a>`) + row('Session', d.length) +
@@ -100,7 +100,7 @@ async function handleBooking(req, res) {
       subject: `New request: ${d.name}, ${d.length}, ${prettyDate(d.date)}`,
       html: wrap('New session request', `<table style="border-collapse:collapse;font-size:15px">${details}</table>
 <p style="margin-top:20px"><a href="https://${DOMAIN}/text?to=${digits(d.phone)}&amp;name=${encodeURIComponent(d.name.split(' ')[0])}" style="background:#0b4a55;color:#fff;padding:10px 18px;border-radius:999px;text-decoration:none;font-weight:bold">Text ${esc(d.name.split(' ')[0])}</a>
-&nbsp; <a href="mailto:${esc(d.email)}?subject=${encodeURIComponent('Your session request with The Missing Link')}&amp;body=${encodeURIComponent(`Hi ${d.name.split(' ')[0]},\n\nThanks for your request for a ${d.length} session on ${prettyDate(d.date)} at ${d.time}.\n\n`)}" style="background:#e3bd86;color:#0a2f35;padding:10px 18px;border-radius:999px;text-decoration:none;font-weight:bold">Email ${esc(d.name.split(' ')[0])}</a>
+&nbsp; <a href="mailto:${esc(d.email)}?subject=${encodeURIComponent('Your session request with Knead by Massage Sheli')}&amp;body=${encodeURIComponent(`Hi ${d.name.split(' ')[0]},\n\nThanks for your request for a ${d.length} session on ${prettyDate(d.date)} at ${d.time}.\n\n`)}" style="background:#e3bd86;color:#0a2f35;padding:10px 18px;border-radius:999px;text-decoration:none;font-weight:bold">Email ${esc(d.name.split(' ')[0])}</a>
 &nbsp; <a href="tel:+1${digits(d.phone)}" style="color:#0b4a55;font-weight:bold">Call</a></p>
 <p style="font-size:14px;color:#14282b">Phone: <a href="${tel}" style="${L}">${esc(d.phone)}</a> &middot; Email: <a href="${mail}" style="${L}">${esc(d.email)}</a></p>
 <p style="font-size:13px;color:#4f6366">Reply to this email to answer them directly. They agreed to the 24-hour cancellation policy.</p>`)
@@ -165,7 +165,7 @@ function textPage(res, url) {
   const to = digits(url.searchParams.get('to'));
   if (!/^\d{10,15}$/.test(to)) return send(res, 400, 'Invalid number', { 'Content-Type': TYPES['.txt'] });
   const name = clip(url.searchParams.get('name'), 40);
-  const body = `Hi ${name}, this is Sheli from The Missing Link. Thanks for your session request!`;
+  const body = `Hi ${name}, this is Sheli from Knead by Massage Sheli. Thanks for your session request!`;
   const sms = `sms:+1${to}?&body=${encodeURIComponent(body)}`;
   const shown = to.length === 10 ? `${to.slice(0, 3)}-${to.slice(3, 6)}-${to.slice(6)}` : to;
   send(res, 200, `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Text ${esc(name)}</title>
