@@ -179,6 +179,9 @@ const server = http.createServer(async (req, res) => {
     const host = (req.headers.host || '').toLowerCase();
     const url = new URL(req.url, 'http://x');
     if (host === 'www.' + DOMAIN) return send(res, 301, '', { Location: `https://${DOMAIN}${url.pathname}${url.search}` });
+    // the Render address forwards to the real domain so Google and shared links only ever show the domain
+    if (host.endsWith('.onrender.com') && url.pathname !== '/healthz' && (req.method === 'GET' || req.method === 'HEAD'))
+      return send(res, 301, '', { Location: `https://${DOMAIN}${url.pathname}${url.search}` });
 
     if (url.pathname === '/api/booking') {
       if (req.method !== 'POST') return json(res, 405, { error: 'Method not allowed.' });
