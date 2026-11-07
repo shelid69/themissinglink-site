@@ -124,6 +124,42 @@ async function handleBooking(req, res) {
   json(res, 200, { ok: true });
 }
 
+// Google reviews via Places API (New). Success is cached 12 hours (each call is billed); failures are retried after 5 minutes.
+let reviewsCache = { at: 0, ok: false, body: null };
+async function googleReviews(res) {
+  const key = process.env.GOOGLE_PLACES_API_KEY, place = process.env.GOOGLE_PLACE_ID;
+  if (!key || !place) return json(res, 503, { error: 'not_configured' });
+  const age = Date.now() - reviewsCache.at;
+  if (reviewsCache.body && (reviewsCache.ok ? age < 12 * 3600e3 : age < 5 * 60e3)) {
+    return reviewsCache.ok
+      ? send(res, 200, reviewsCache.body, { 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=3600' })
+      : json(res, 502, { error: 'unavailable' });
+  }
+  try {
+    const r = await fetch(`https://places.googleapis.com/v1/places/${encodeURIComponent(place)}`, {
+      headers: { 'X-Goog-Api-Key': key, 'X-Goog-FieldMask': 'displayName,rating,userRatingCount,reviews,googleMapsUri' }
+    });
+    if (!r.ok) throw new Error(`Places ${r.status}: ${(await r.text()).slice(0, 300)}`);
+    const g = await r.json();
+    const body = JSON.stringify({
+      name: g.displayName && g.displayName.text, rating: g.rating || null, count: g.userRatingCount || 0, url: g.googleMapsUri || null,
+      reviews: (g.reviews || []).map(v => ({
+        rating: v.rating || 0,
+        text: (v.text && v.text.text) || (v.originalText && v.originalText.text) || '',
+        author: (v.authorAttribution && v.authorAttribution.displayName) || 'Google reviewer',
+        authorUrl: (v.authorAttribution && v.authorAttribution.uri) || null,
+        when: v.relativePublishTimeDescription || ''
+      })).filter(v => v.text)
+    });
+    reviewsCache = { at: Date.now(), ok: true, body };
+    send(res, 200, body, { 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=3600' });
+  } catch (e) {
+    console.error('google reviews failed', e.message);
+    reviewsCache = { at: Date.now(), ok: false, body: 'x' };
+    json(res, 502, { error: 'unavailable' });
+  }
+}
+
 // Gmail strips sms: links from emails, so the Text button opens this page, which hands off to the phone's Messages app.
 function textPage(res, url) {
   const to = digits(url.searchParams.get('to'));
@@ -149,6 +185,7 @@ const server = http.createServer(async (req, res) => {
       return await handleBooking(req, res);
     }
     if (url.pathname === '/text') return textPage(res, url);
+    if (url.pathname === '/api/google-reviews') return await googleReviews(res);
     if (url.pathname === '/healthz') return send(res, 200, 'ok');
     if (url.pathname === '/robots.txt') return send(res, 200, ROBOTS, { 'Content-Type': TYPES['.txt'] });
     if (url.pathname === '/sitemap.xml') return send(res, 200, SITEMAP, { 'Content-Type': TYPES['.xml'] });

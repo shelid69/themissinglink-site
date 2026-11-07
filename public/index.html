@@ -174,7 +174,9 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--teal-2);outline-
 .stars{color:#d79b33;letter-spacing:2px}
 .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .rev{background:var(--field);border:1px solid var(--line);border-radius:var(--radius);padding:22px;font-size:.95rem}
-.rev b{display:block;margin-top:10px;color:var(--deep)}
+.rev .rev-author{display:block;margin-top:10px;color:var(--deep);font-weight:700;text-decoration:none}
+.rev small{display:block;color:var(--muted);font-size:.8rem;margin-top:2px}
+.rev p{display:-webkit-box;-webkit-line-clamp:7;-webkit-box-orient:vertical;overflow:hidden}
 
 /* faq */
 .faq details{background:var(--field);border:1px solid var(--line);border-radius:14px;margin-bottom:12px;padding:0 22px}
@@ -784,11 +786,13 @@ footer li{margin-bottom:8px;color:#c3d4d1}
         var c = document.createElement('div'); c.className = 'rev';
         var s = document.createElement('div'); s.className = 'stars'; s.textContent = '★★★★★'.slice(0, Math.round(rv.rating||5));
         var p = document.createElement('p'); p.textContent = rv.text || '';
-        var b = document.createElement('b'); b.textContent = rv.author || 'Google reviewer';
-        c.appendChild(s); c.appendChild(p); c.appendChild(b); grid.appendChild(c);
+        var b = document.createElement(rv.authorUrl ? 'a' : 'b'); b.textContent = rv.author || 'Google reviewer'; b.className = 'rev-author';
+        if (rv.authorUrl) { b.href = rv.authorUrl; b.target = '_blank'; b.rel = 'noopener'; }
+        var w = document.createElement('small'); w.textContent = (rv.when ? rv.when + ' \u00b7 ' : '') + 'Posted on Google';
+        c.appendChild(s); c.appendChild(p); c.appendChild(b); c.appendChild(w); grid.appendChild(c);
       });
       if (j.rating) document.getElementById('rev-stars').textContent = j.rating.toFixed(1) + ' ★';
-      if (j.count) document.getElementById('rev-count').textContent = j.count + ' reviews on Google';
+      if (j.count) document.getElementById('rev-count').textContent = j.count + (j.count === 1 ? ' review' : ' reviews') + ' on Google';
       if (j.url) document.getElementById('rev-all').href = j.url;
       document.getElementById('reviews').style.display = 'block';
       document.getElementById('nav-reviews').hidden = false;
